@@ -1,0 +1,10 @@
+https://www.commentcamarche.net/faq/9324-commandes-ip-relatives-aux-reseaux-sous-windows
+commandes_tcpip 
+- ping : vérifie que l'adresse répond ou non
+- arp -a <adresse ip> : renvoie la mac adress
+- nslookup : renvoie adresse dns / gateway
+- subnet mask (ip fixe) : 255.255.255.0
+
+arduino : 
+- nom d'hôte : 		arduino
+- mac address type : 	90:A2:DA:F9:11:0D

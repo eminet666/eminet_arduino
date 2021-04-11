@@ -1,0 +1,7 @@
+https://openclassrooms.com/forum/sujet/arduino-yun-ethernet-begin-mac-probleme
+
+- fonctions réseaux de la Yun = utiliser la lib Bridge : http://arduino.cc/en/Reference/YunBridgeLibrary
+- classe HttpClient qui permet de faire directement des requêtes HTTP : http://arduino.cc/en/Tutorial/HttpClient
+
+
+https://www.youtube.com/watch?v=gD0PUKQiGqo
