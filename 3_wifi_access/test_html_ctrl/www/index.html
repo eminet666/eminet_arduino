@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+    <script src="zepto.min.js"></script>
+    <script >
+        function ledon() {
+            $('#content').load('/arduino/digital/13/1');
+        }
+
+        function ledoff() {
+            $('#content').load('/arduino/digital/13/0');
+        }
+    </script>
+</head>
+
+<body>
+    <span id="content"></span>
+    </br>
+    <button onclick="ledon()">LED ON</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <button onclick="ledoff()">LED OFF</button>
+</body>
+
+</html>

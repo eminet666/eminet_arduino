@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"
+            integrity="sha512-BrvVYNhKh6yST24E5DY/LopLO5d+8KYmIXyrpBIJ2PK+CyyJw/cLSG/BfJomWLC1IblNrmiJWGlrGueKLd/Ekw=="
+            crossorigin="anonymous">
+        </script>
+        <script>
+            function refresh() {
+                $('#content').load('/arduino/temperature');
+                var data = document.getElementById("content");
+                //console.log(data.innerHTML);
+                var taille = data.innerHTML+"px";
+                var carre = document.getElementById("square");
+                carre.style.width = taille;
+                carre.style.height = taille;
+                carre.innerHTML = taille;
+            }
+        </script>
+        <style>
+            #square { 
+                background-color: crimson; 
+                width: 100px; height: 100px; 
+                color: white; 
+                font-size: 50px;
+            }
+        </style>
+    </head>
+
+    <body onload="setInterval(refresh, 1000);">
+        <span id="content">Waiting for Arduino...</span>
+        <div id="square"></div>
+    </body>
+
+</html>
+

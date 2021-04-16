@@ -1,1 +1,4 @@
 http://lessons.julien-drochon.net/arduino-yun/
+
+A VOIR
+https://babaawesam.com/2014/11/06/control-input-output-of-arduino-yun-with-ajax/

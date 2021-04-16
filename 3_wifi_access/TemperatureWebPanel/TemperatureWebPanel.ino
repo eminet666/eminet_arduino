@@ -1,8 +1,9 @@
+/* https://www.arduino.cc/en/Tutorial/LibraryExamples/TemperatureWebPanel */
 #include <Bridge.h>
 #include <BridgeServer.h>
 #include <BridgeClient.h>
 
-BridgeServer server;
+        BridgeServer server;
 String startString;
 long hits = 0;
 

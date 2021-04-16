@@ -14,7 +14,7 @@ void setup() {
         Serial.println("Init Failed !");
     }
      
-    File file = FileSystem.open("/mnt/sda1/test.txt", FILE_WRITE);
+    File file = FileSystem.open("/mnt/sda1/test_vrite.txt", FILE_WRITE);
      
     if (!file) {
         Serial.println("Open Failed !");
