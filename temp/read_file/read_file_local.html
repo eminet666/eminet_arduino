@@ -1,0 +1,18 @@
+<!-- source : https://yard.onl/sitelycee/cours/js/_Js.html?Lirelesfichiers.html-->
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+
+    <body>
+        <script>
+            var fichier = "local.txt";
+            var reader = new FileReader();
+            reader.readAsText(fichier);
+            reader.onload = function () {
+                alert(reader.result);
+            };
+        </script>
+    </body>
+</html>

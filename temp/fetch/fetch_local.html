@@ -1,0 +1,25 @@
+<!-- https://www.w3schools.com/js/js_api_fetch.asp -->
+<!DOCTYPE html>
+<html>
+
+<body>
+    <p id="demo">Fetch a file to change this text.</p>
+
+    <script>
+        getText("local.txt");
+
+        async function getText(file) {
+            let myObject = await fetch(file);
+            let myText = await myObject.text();
+            var res = myText.split('\r\n');
+            console.log(res);
+            console.log(res[0]);
+            document.getElementById("demo").innerHTML=res[0];
+        }
+
+    </script>
+
+</body>
+
+</html>
+

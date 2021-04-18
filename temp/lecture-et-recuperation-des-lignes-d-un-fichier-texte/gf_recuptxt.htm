@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<title>Lecture un fichier texte</title>
+<meta name="Author" content="PetoleTeam">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="gf_recup.css">
+<style type="text/css">
+#I_RECUP {
+  border : 1px solid #66aaff;
+  background-color : #fff;
+  width : 500px;
+  height : 100px;
+  padding : 0px;
+  marging : 0px;
+}
+#T_RECUP {
+  border : 1px solid #66aaff;
+  width : 500px;
+  height : 100px;
+  padding : 0px;
+  marging : 0px;
+}
+#D_RESULT {
+  border : 1px solid #66aaff;
+  background-color : #fff;
+  width : 500px;
+  height : 100px;
+  padding : 0px;
+  marging : 0px;
+}
+</style>
+<script type="text/javascript">
+//-------------------------
+function Read_File( where_){
+  //-- Recup des Objets
+  var szTmp  ="";
+  var O_Src  = document.getElementById( 'I_RECUP').contentWindow.document;
+  var O_Dest = document.getElementById( 'T_RECUP');
+  if( O_Src.body){
+    O_Src = O_Src.body;
+    //-- Lecture du contenu
+    if( O_Src.textContent)
+      szTmp = O_Src.textContent;
+    //-- Cas IE
+    else if (O_Src.innerText)
+      szTmp = O_Src.innerText;
+    //-- cas NetScape a part
+    else if( O_Src.innerHTML){
+      szTmp = O_Src.innerHTML;
+      szTmp = szTmp.replace(/&lt;/gi, "\<");
+      szTmp = szTmp.replace(/&gt;/gi, "\>");
+      szTmp = szTmp.replace(/<pre>/gi, "");
+      szTmp = szTmp.replace(/<\/pre>/gi, "");
+    }
+  }
+  else
+    szTmp = "ERREUR Format Fichier";
+
+  //-- Transfert dans TEXTAREA
+  O_Dest.value = szTmp;
+  //-- Recuperation des lignes
+  var O_Src  = document.getElementById( 'T_RECUP');
+  var O_Dest = document.getElementById( where_);
+
+  if( O_Dest){
+    szTmp ="";
+    //-- Supprime "\r" pour IE et Opera
+    O_Src.value = O_Src.value.replace(/\r/gi, "")
+    //-- Recup donnee
+    var T_Lig = O_Src.value.split('\n');
+    //-- Supprime ligne vide en fin de fichier
+     while(!T_Lig[T_Lig.length-1].replace(/\s/g,''))
+       T_Lig.length --;//= T_Lig.length-1;
+    //-- Pour tous les lignes
+    for( var i=0; i <T_Lig.length; i++){
+      szTmp += T_Lig[i] +'<br>';
+    }
+    //-- Ecrit le resultat
+    O_Dest.innerHTML = szTmp;
+  }
+}
+//-----------------------------
+function Affiche( this_, what_){
+  var Obj = document.getElementById( what_);
+  if( !this_.flag){
+    this_.flag = false;
+    this_.old = this_.innerHTML;
+    this_.innerHTML='Cacher les zones de r&eacute;cup&eacute;ration';
+    if( Obj) Obj.style.display='block';
+  }
+  else{
+    this_.innerHTML = this_.old;
+    if( Obj) Obj.style.display='none';
+  }
+  this_.flag = !this_.flag;
+}
+</script>
+</head>
+<body>
+<div class="entete">
+<span class="T0">Lecture d'un fichier texte...</span>
+<span class="T1">&nbsp;&nbsp;by PetoleTeam...&nbsp;&nbsp;( For Use and Abuse )</span>
+</div>
+<div id="D_MAIN" style="margin:20px">
+<br>
+<!-- -->
+<div class="T2 titre">But du Jeu...</div>
+<div class="T3">
+<p class ="txt">- R&eacute;cup&eacute;rer chaque ligne d'un fichier texte &agrave; des fins de traitement divers.
+</div>
+<!-- -->
+<div class="T2 titre">Principe...</div>
+<div class="T3">
+<p class ="txt">- Ouvrir le fichier texte dans une <span class="code">IFRAME</span>,
+<p class ="txt">- transf&eacute;rer le contenu dans une <span class="code">TEXTAREA</span>
+<p class ="txt">- r&eacute;cup&eacute;rer les diff&eacute;rentes lignes dans un ARRAY pour en faire ce que bon vous semble.
+</div>
+<!-- -->
+<div class="T2 titre">Utilisation...</div>
+<div class="T3">
+<p class ="txt">- Permet de ne plus modifier la page HTML mais seulement le fichier texte.
+<p class ="txt">- Ce fichier peut contenir des balises HTML comme dans l'exemple ci dessous...
+</div>
+<!-- -->
+<div class="T2 titre">Dysfonctionnements connus...</div>
+<div class="T3">
+<br><span class="soustitre">Sous NetScape 7x</span>
+<p class =" txt">Probl&egrave;me de prise en compte des caract&egrave;res &eacute;tendus.
+</div>
+<!-- -->
+<div class="T2 titre">Voir le r&eacute;sultat...</div>
+<div class="T3">
+<p class ="txt">[<a href="javascript:;" onclick="Read_File('D_RESULT');">Lancer la r&eacute;cup&eacute;ration</a>]
+<br><br><b>DIV</b> pour affichage final
+<br><div id="D_RESULT"></div>
+<!-- ZONE DE RECUPERATION -->
+<br>[<a href="javascript:;" onclick="Affiche( this, 'D_RECUP');">Afficher les zones de r&eacute;cup&eacute;ration</a>]
+<div id="D_RECUP" style="display:none">
+<br><b>IFRAME</b> pour prise en compte du fichier
+<br><iframe id="I_RECUP" src="message.txt" frameborder=no></iframe>
+<br><br><b>TEXTAREA</b> pour la r&eacute;cup&eacute;ration des lignes
+<br><textarea id="T_RECUP"></textarea><br>
+</div>
+<!-- FIN ZONE DE RECUPERATION -->
+</div>
+<!-- -->
+<div class="T2 titre">Exemples...</div>
+<div class="T3">
+<br><span class="soustitre">Exemple #1</span>
+<p class=text>
+- Remplissage d'une <b>table</b> sur le <span class="code">onload</span>.
+<br>[<a href="gf_recuptable.htm" target="EXEMPLE" title="Voir l'exemple">Voir l'exemple</a>]
+</div>
+<div class="T3">
+<br><span class="soustitre">Exemple #2</span>
+<p class=text>
+- M&ecirc;me principe pour un <b>message al&eacute;atoire</b>.
+<br>[<a href="gf_recupaleatoire.htm" target="EXEMPLE" title="Voir l'exemple">Voir l'exemple</a>]
+</div>
+</div>
+<div class="petole">;0)</div>
+<span class="T1">le 01.03.2008</span>
+</body>
+</html>

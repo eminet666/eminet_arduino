@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<title>#1 Lecture d'un fichier texte</title>
+<meta name="Author" content="PetoleTeam">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="gf_recup.css">
+<style type="text/css">
+#TAB_RESULT {
+  border : 1px solid #66aaff;
+  background-color : #fff;
+  width : 500px;
+  height : 100px;
+  padding : 0px;
+  marging : 0px;
+  empty-cells : show;
+  border-spacing : 1px;
+  border-collapse : separate;
+}
+#TAB_RESULT td {
+  border : 1px solid #66aaff;
+  background-color : #fff;
+  height : 20px;
+  padding : 0px;
+  marging : 0px;
+}
+</style>
+<script type="text/javascript">
+//-------------------------
+function Read_File( where_){
+  //-- Recup des Objets
+  var szTmp  ="";
+  var O_Src  = document.getElementById( 'I_RECUP').contentWindow.document;
+  var O_Dest = document.getElementById( 'T_RECUP');
+  if( O_Src.body){
+    O_Src = O_Src.body;
+    //-- Lecture du contenu
+    if( O_Src.textContent)
+      szTmp = O_Src.textContent;
+    //-- Cas IE
+    else if (O_Src.innerText)
+      szTmp = O_Src.innerText;
+    //-- cas NetScape a part
+    else if( O_Src.innerHTML){
+      szTmp = O_Src.innerHTML;
+      szTmp = szTmp.replace(/&lt;/gi, "\<");
+      szTmp = szTmp.replace(/&gt;/gi, "\>");
+      szTmp = szTmp.replace(/<pre>/gi, "");
+      szTmp = szTmp.replace(/<\/pre>/gi, "");
+    }
+  }
+  else
+    szTmp = "ERREUR Format Fichier";
+
+  //-- Transfert dans TEXTAREA
+  O_Dest.value = szTmp;
+  //-- Recuperation des lignes
+  var O_Src  = document.getElementById( 'T_RECUP');
+  var O_Dest = document.getElementById( where_);
+
+  if( O_Dest){
+    szTmp ="";
+    //-- Supprime "\r" pour IE et Opera
+    O_Src.value = O_Src.value.replace(/\r/gi, "")
+    //-- Recup des lignes
+    var T_Lig = O_Src.value.split('\n');
+    //-- Supprime ligne vide en fin de fichier
+     while(!T_Lig[T_Lig.length-1].replace(/\s/g,''))
+       T_Lig.length --;//= T_Lig.length-1;
+    //-- Pour tous les lignes recup des colonnes
+    var T_Col = new Array();
+    for( var i=0; i <T_Lig.length; i++){
+      T_Col[i] = T_Lig[i].split(";");
+    }
+    //-- Ecriture dans la table
+    var L_Maxi = Math.min( O_Dest.rows.length, T_Lig.length);
+    //-- Ecrit le resultat
+    for( var i =0; i< L_Maxi; i++){
+      var C_Maxi = Math.min (O_Dest.rows[0].cells.length, T_Col[i].length);
+      for( var k =0; k< C_Maxi; k++){
+        O_Dest.rows[i].cells[k].innerHTML = T_Col[i][k];
+      }
+    }
+  }
+}
+</script>
+</head>
+<body onload="Read_File('TAB_RESULT');">
+<!-- ZONE DE RECUPERATION -->
+<div id="D_RECUP" style="display:none">
+<iframe id="I_RECUP" src="table.txt"></iframe>
+<textarea id="T_RECUP"></textarea>
+</div>
+<!-- FIN ZONE DE RECUPERATION -->
+<div class="entete">
+<span class="T0">Lecture d'un fichier texte...</span>
+<span class="T1">&nbsp;&nbsp;by PetoleTeam...&nbsp;&nbsp;( For Use and Abuse )</span>
+</div>
+<div id="D_MAIN" style="margin:20px; width:600px">
+<br>
+<!-- -->
+<div class="T2 titre">Exemple avec une table...</div>
+<div class="T3">
+<p class ="txt">- Les donn&eacute;es en ligne sont s&eacute;par&eacute;s par un point virgule, pour info le fichier charg&eacute;, <b>table.txt</b>, a &eacute;t&eacute; cr&eacute;e &agrave; partir d'Excel puis enregistrer au format CSV avec une extension <b>.txt</b>.
+<p class ="txt">- La table est remplie sur le onload du <span class="code">body</span> comme indiqu&eacute; ci dessous
+<pre style="width:480px;margin-left:0px;">
+&lt;body onload="Read_File('TAB_RESULT');"&gt;
+</pre>
+<p class ="txt">- Les donn&eacute;es sont r&eacute;cup&eacute;r&eacute;es via une <span class="code">IFRAME</span> et une <span class="code">TEXTAREA</span> d&eacute;clar&eacute;e dans le document comme suit
+<pre style="width:480px;margin-left:0px;">
+&lt;div id="D_RECUP" style="display:none"&gt;
+&lt;iframe id="I_RECUP" src="table.txt"&gt;&lt;/iframe&gt;
+&lt;textarea id="T_RECUP"&gt;&lt;/textarea&gt;
+&lt;/div&gt;
+</pre>
+<p class ="txt">- puis affich&eacute;es dans une <span class="code">TABLE</span> d&eacute;clar&eacute;e dans le document comme suit
+<pre style="width:480px;margin-left:0px;">
+&lt;table id="TAB_RESULT"&gt;
+</pre>
+</div>
+<div class="T3">
+<table id="TAB_RESULT" summary="Affichage">
+<tr><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+</div>
+</div>
+<div class="petole">;0)</div>
+<span class="T1">le 01.03.2008</span>
+</body>
+</html>

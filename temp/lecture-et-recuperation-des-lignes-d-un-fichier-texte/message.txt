@@ -1,0 +1,4 @@
+Ligne en premi&egrave;re position
+<b>Ligne 2</b>
+<i>Ligne 3</i>
+<b><font style="font-size:13px; color:#ff0000; font-family:verdana;">Bonjour la ligne ROUGE</font></b>

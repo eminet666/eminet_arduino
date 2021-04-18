@@ -1,0 +1,21 @@
+<!-- source : https://yard.onl/sitelycee/cours/js/_Js.html?Lirelesfichiers.html-->
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+
+    <body>
+        <input id="file" type="file" />
+        <script>
+            var fileInput = document.querySelector('#file');
+            fileInput.onchange = function () {
+                var reader = new FileReader();
+                reader.onload = function () {
+                    alert('Contenu du fichier "' + fileInput.files[0].name + '" :\n\n' + reader.result);
+                };
+                reader.readAsText(fileInput.files[0]);
+            };
+        </script>
+    </body>
+</html>

@@ -1,6 +1,9 @@
+/* écriture des temperatures dans un 
+ accès : http://192.168.0.33/sd/temperature.txt
+*/
 #include <Bridge.h>
 #include <FileIO.h>
-File monFichier;
+File monFichier;         
 
 void setup() {
   // Initialize the Bridge and the Serial

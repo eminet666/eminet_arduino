@@ -1,0 +1,97 @@
+body {
+  background-color : #fff;
+  background-color : #fcfcf0;
+  color : #000000;
+  font-size : 13px;
+  font-family : Verdana, Arial, Helvetica;
+  font-weight : normal;
+  margin : 20px;
+  padding : 0px;
+}
+.entete {
+  background-color : #ffffcc;
+  padding-left : 10px;
+  padding-top : 5px;
+  border : 1px solid #ffcc66;
+  width : 98%;
+  height : 35px;
+}
+.T0 {
+  color : #bb0000;
+  font-size : 20px;
+  font-family : Verdana;
+  font-weight : bold;
+}
+.T1 {
+  color : #808080;
+  font-size : 13px;
+  font-family : Verdana;
+}
+.T2 {
+  color : #000080;
+  font-size : 15px;
+  font-family : Verdana;
+}
+.T3 {
+  color : #000;
+  font-size : 13px;
+  font-family : Verdana;
+  margin-left : 10px;
+  padding : 0 0 20px 20px;
+}
+.titre {
+  background-color : #ffffcc;
+  font-size : 17px;
+  border : 1px solid #ffcc66;
+  margin : 5px;
+  padding : 5px;
+  width : 400px;
+}
+.soustitre {
+  color : #000080;
+  background-color : #ffffcc;
+  font-size : 15px;
+  font-weight : bold;
+  margin-left : -10px;
+  padding : 2px;
+  width : 300px;
+}
+.txt {
+  color : #000000;
+  font-size : 13px;
+  font-family : Verdana, sans serif;
+  text-align : justify;
+  text-indent : 0px;
+  margin-right : 20px;
+  margin-left : 0px;
+  margin-top : 5px;
+  margin-bottom : 0px;
+}
+pre {
+  color : #0000ff;
+  font-size : 13px;
+  margin : 10px;
+  padding : 10px;
+  background-color : #ffffff;
+  border : 1px solid #66aaff;
+}
+.code {
+  color : #0000ff;
+  font-size : 13px;
+  font-family : 'Courier New';
+}
+a {
+  color : #0000ff;
+  font-size : 13px;
+  font-weight : normal;
+  text-decoration : none;
+}
+a:HOVER {
+  font-weight : bold;
+}
+.petole {
+  color : #ffa500;
+  font-family : Verdana;
+  font-size : 2.5em;
+  font-weight : bold;
+}

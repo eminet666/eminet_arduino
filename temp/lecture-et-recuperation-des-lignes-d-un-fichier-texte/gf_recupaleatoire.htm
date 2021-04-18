@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<title>#2 Lecture d'un fichier texte</title>
+<meta name="Author" content="PetoleTeam">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="gf_recup.css">
+<style type="text/css">
+table {
+  border : 1px solid #66aaff;
+  background-color : #fff;
+  width : 500px;
+  height : 30px;
+  padding : 0px;
+  marging : 0px;
+  empty-cells : show;
+  border-spacing : 1px;
+  border-collapse : separate;
+  text-align : center;
+}
+#TD_RESULT {
+  border : 1px solid #66aaff;
+  background-color : #fff;
+  height : 35px;
+  width : 500px;
+  padding : 0px;
+  marging : 0px;
+  text-align : center;
+}
+</style>
+<script type="text/javascript">
+//-------------------------
+function Read_File( where_){
+  //-- Recup des Objets
+  var szTmp  ="";
+  var O_Src  = document.getElementById( 'I_RECUP').contentWindow.document;
+  var O_Dest = document.getElementById( 'T_RECUP');
+  if( O_Src.body){
+    O_Src = O_Src.body;
+    //-- Lecture du contenu
+    if( O_Src.textContent)
+      szTmp = O_Src.textContent;
+    //-- Cas IE
+    else if (O_Src.innerText)
+      szTmp = O_Src.innerText;
+    //-- cas NetScape a part
+    else if( O_Src.innerHTML){
+      szTmp = O_Src.innerHTML;
+      szTmp = szTmp.replace(/&lt;/gi, "\<");
+      szTmp = szTmp.replace(/&gt;/gi, "\>");
+      szTmp = szTmp.replace(/<pre>/gi, "");
+      szTmp = szTmp.replace(/<\/pre>/gi, "");
+    }
+  }
+  else
+    szTmp = "ERREUR Format Fichier";
+
+  //-- Transfert dans TEXTAREA
+  O_Dest.value = szTmp;
+  //-- Recuperation des lignes
+  var O_Src  = document.getElementById( 'T_RECUP');
+  var O_Dest = document.getElementById( where_);
+
+  if( O_Dest){
+    szTmp ="";
+    //-- Supprime "\r" pour IE et Opera
+    O_Src.value = O_Src.value.replace(/\r/gi, "")
+    //-- Recup des lignes
+    var T_Lig = O_Src.value.split('\n');
+    //-- Supprime ligne vide en fin de fichier
+     while(!T_Lig[T_Lig.length-1].replace(/\s/g,''))
+       T_Lig.length --;//= T_Lig.length-1;
+    //-- Recup nombre aleatoire
+    var Num = Math.floor(Math.random() * T_Lig.length);
+    //-- Ecrit le resultat
+    O_Dest.innerHTML = T_Lig[Num];
+  }
+}
+</script>
+</head>
+<body onload="Read_File('TD_RESULT');">
+<!-- ZONE DE RECUPERATION -->
+<div id="D_RECUP" style="display:none">
+<iframe id="I_RECUP" src="aleatoire.txt"></iframe>
+<textarea id="T_RECUP"></textarea>
+</div>
+<!-- FIN ZONE DE RECUPERATION -->
+<div class="entete">
+<span class="T0">Lecture d'un fichier texte...</span>
+<span class="T1">&nbsp;&nbsp;by PetoleTeam...&nbsp;&nbsp;( For Use and Abuse )</span>
+</div>
+<div id="D_MAIN" style="margin:20px; width:600px">
+<br>
+<!-- -->
+<div class="T2 titre">Exemple avec un message al&eacute;atoire...</div>
+<div class="T3">
+<p class ="txt">- Les messages sont dans le fichier <b>aleatoire.txt</b>.
+<p class ="txt">- Le message est initialis&eacute; sur le onload du <span class="code">body</span> comme indiqu&eacute; ci dessous
+<pre style="width:480px;margin-left:0px;">
+&lt;body onload="Read_File('TD_RESULT');"&gt;
+</pre>
+<p class ="txt">- Les donn&eacute;es sont r&eacute;cup&eacute;r&eacute;es via une <span class="code">IFRAME</span> et une <span class="code">TEXTAREA</span> d&eacute;clar&eacute;e dans le document comme suit
+<pre style="width:480px;margin-left:0px;">
+&lt;div id="D_RECUP" style="display:none"&gt;
+&lt;iframe id="I_RECUP" src="table.txt"&gt;&lt;/iframe&gt;
+&lt;textarea id="T_RECUP"&gt;&lt;/textarea&gt;
+&lt;/div&gt;
+</pre>
+<p class ="txt">- puis affich&eacute;es dans une <span class="code">TD</span> d&eacute;clar&eacute;e dans le document comme suit
+<pre style="width:480px;margin-left:0px;">
+&lt;td id="TD_RESULT"&gt;&lt;/td&gt;
+</pre>
+<br><b>MESSAGE</b> al&eacute;atoire...
+<br>
+<table summary="Affichage">
+<tr><td id="TD_RESULT"></td></tr>
+</table>
+</div>
+</div>
+<div class="petole">;0)</div>
+<span class="T1">le 01.03.2008</span>
+</body>
+</html>

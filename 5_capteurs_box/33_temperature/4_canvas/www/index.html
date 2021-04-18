@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <canvas id="myCanvas" width="300" height="300" style="border:1px solid #d3d3d3;">
+            Your browser does not support the HTML canvas tag.</canvas>
+
+        <script>
+            getText("../temperature.txt");
+
+            async function getText(file) {
+                let myObject = await fetch(file);
+                let myText = await myObject.text();
+                var res = myText.split('\r\n');
+                console.log(res.length);
+
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+                for (let i = 0; i < res.length; i++) {
+                    ctx.moveTo(i, 0);
+                    ctx.lineTo(i, 10 * res[i]);
+                    ctx.stroke();
+                }
+
+            }
+        </script>
+    </body>
+
+</html>
+
