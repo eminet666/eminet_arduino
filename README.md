@@ -40,4 +40,10 @@ mot de passe : arduino
 ### a regarder
 * [config](https://www.youtube.com/watch?v=sa2ynrJffdg&lc=UgjG-3dkFVwC_3gCoAEC)
 
+### mac usbmodem serial port : "/dev/cu.usbmodemXXXXX"
+[forum](https://www.mathworks.com/help/supportpkg/arduinoio/ug/find-arduino-port-on-windows-mac-and-linux.html) | 
+[forum2](https://stackoverflow.com/questions/12254378/how-to-find-the-serial-port-number-on-mac-os-x)
+[forum3](https://mynewt.apache.org/v1_5_0/get_started/serial_access.html)
+[forum4](https://books.google.fr/books?id=dTezDgAAQBAJ&pg=PT205&lpg=PT205&dq=arduino+mac+os+usb+port+/dev/usbmodem&source=bl&ots=3TABDdNa-u&sig=ACfU3U30cV9Jnco169L7YAgdP6EOjavhnw&hl=fr&sa=X&ved=2ahUKEwjmnd3c6KDxAhWnxoUKHURiA2QQ6AEwCnoECAgQAw#v=onepage&q=arduino%20mac%20os%20usb%20port%20%2Fdev%2Fusbmodem&f=false)
+
 

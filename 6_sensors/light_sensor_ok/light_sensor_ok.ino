@@ -11,7 +11,7 @@ void loop()
 {
     Serial.println(analogRead(A0));
     delay(100);
-    if (analogRead(A0) < 100)
+    if (analogRead(A0) < 600)
     {
         digitalWrite(9, HIGH);
     }
